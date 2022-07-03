@@ -1,6 +1,6 @@
 {
     "name": "kilicselcuk/flarum-ext-postcomments",
-    "description": "for flarum reply post and list comments bottom post",
+    "description": "[For Flarum] Make sure to comment on the answers and list the comments below the answers.",
     "keywords": [
         "flarum"
     ],
