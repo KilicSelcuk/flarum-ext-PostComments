@@ -31,7 +31,8 @@ return [
 
     (new Extend\Routes('api'))
         ->get('/trees/{id}', 'postcomments.trees.get', ListCommentPostController::class),
-    (new Extend\Event())->listen(Saving::class, Listener\SaveReplyTo::class),
+    (new Extend\Event())->listen(Saving::class, Listener\SaveReplyTo::class)
+        ->subscribe(Listener\HandleDeletions::class),
 
 
     /**/(new Extend\ModelVisibility(Post::class))
