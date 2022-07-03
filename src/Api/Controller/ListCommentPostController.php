@@ -1,9 +1,9 @@
 <?php
 /**
  *
- *  This file is part of kyrne/sylloge
+ *  This file is part of KilicSelcuk\PostCommments
  *
- *  Copyright (c) 2020 Kyrne.
+ *  Copyright (c) 2022 KilicSelcuk.
  *
  *  For the full copyright and license information, please view the license.md
  *  file that was distributed with this source code.
