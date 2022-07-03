@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/kilicselcuk/flarum-ext-postcomments.svg)](https://packagist.org/packages/kilicselcuk/flarum-ext-postcomments) [![Total Downloads](https://img.shields.io/packagist/dt/kilicselcuk/flarum-ext-postcomments.svg)](https://packagist.org/packages/kilicselcuk/flarum-ext-postcomments)
 
-A [Flarum](http://flarum.org) extension. Make sure to comment on the answers and list the comments below the answers.
+A [Flarum](http://flarum.org) extension. Make sure to comment on the answers and list the comments below the answers. Kuaza
 
 ## Installation
 
