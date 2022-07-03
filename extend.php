@@ -19,7 +19,7 @@ use Flarum\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use KilicSelcuk\PostCommments\Api\Controller\ListCommentPostController;
 use KilicSelcuk\PostCommments\Listener;
-use Kuaza\HadiLutfen;
+use KilicSelcuk\PostCommments;
 return [
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
@@ -30,7 +30,7 @@ return [
     new Extend\Locales(__DIR__.'/locale'),
 
     (new Extend\Routes('api'))
-        ->get('/trees/{id}', 'hadilutfen.trees.get', ListCommentPostController::class),
+        ->get('/trees/{id}', 'postcomments.trees.get', ListCommentPostController::class),
     (new Extend\Event())->listen(Saving::class, Listener\SaveReplyTo::class),
 
 

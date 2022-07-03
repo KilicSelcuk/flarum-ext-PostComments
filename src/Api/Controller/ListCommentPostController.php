@@ -10,7 +10,7 @@
  *
  */
 
-namespace Kuaza\HadiLutfen\Api\Controller;
+namespace KilicSelcuk\PostCommments\Api\Controller;
 
 use Flarum\Api\Controller\AbstractListController;
 use Flarum\Api\Serializer\PostSerializer;
