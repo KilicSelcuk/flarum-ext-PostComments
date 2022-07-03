@@ -34,8 +34,8 @@ return [
     (new Extend\Event())->listen(Saving::class, Listener\SaveReplyTo::class),
 
 
-    /*(new Extend\ModelVisibility(Post::class))
-        ->scopeAll(HidePostCommentReplyScope::class),*/
+    /**/(new Extend\ModelVisibility(Post::class))
+        ->scopeAll(HidePostCommentReplyScope::class),
 
     (new Extend\ApiSerializer(PostSerializer::class))
         ->attributes(function (PostSerializer $serializer, Post $post, array $attributes) {

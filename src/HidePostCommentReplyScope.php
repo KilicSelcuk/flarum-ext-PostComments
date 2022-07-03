@@ -1,6 +1,6 @@
 <?php
 
-namespace Kuaza\HadiLutfen;
+namespace KilicSelcuk\PostCommments;
 
 use Flarum\Extension\ExtensionManager;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -19,7 +19,7 @@ class HidePostCommentReplyScope
     public function __invoke(User $actor, Builder $query, $ability)
     {
 
-        var_dump($query);
+        //var_dump($query);
         $query->where(function (Builder $query) use ($actor) {
 
             $query->Where('reply_to', '=', 0);
