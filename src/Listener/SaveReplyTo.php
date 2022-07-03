@@ -1,5 +1,5 @@
 <?php
-namespace Kuaza\HadiLutfen\Listener;
+namespace KilicSelcuk\PostCommments\Listener;
 
 use Flarum\Post\Event\Saving;
 use Flarum\Post\Post;
@@ -12,9 +12,6 @@ class SaveReplyTo
      */
     public function handle(Saving $event)
     {
-
-
-
 
 
         $data = Arr::get($event->data, 'attributes.content');
@@ -45,7 +42,6 @@ class SaveReplyTo
 
                 // yeni cevabin reply_to degerine, cevap verilen post'un ID sini kaydederiz.
                 $event->post->reply_to = $replyPost->reply_to;
-                $event->post->type = "postcomment";
 
                 //cevap verilen cevabin cevap count sayisini artirma
                 $ogPost = Post::find($replyPost->reply_to);
@@ -55,7 +51,6 @@ class SaveReplyTo
                 // cevap verilen post normal cevap ise yeni yorumun reply_to sunu post id si ile kaydedreriz
             } else {
                 $event->post->reply_to = $replyPost->id;
-                $event->post->type = "postcomment";
 
                 //$event->post->reply_to = $replyPost->reply_to;
                 $replyPost->reply_count = $replyPost->reply_count +1;
