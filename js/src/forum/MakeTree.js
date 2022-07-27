@@ -29,7 +29,12 @@ export default function MakeTree() {
               return a.createdAt() - b.createdAt();
             }).map(post => {
               console.dir(post);
-              return CommentPost.component({post});//return post.data.attributes.content; //
+              return (
+                <div className="AgreementCheck">
+                  {post.data.attributes.content}
+                </div>
+              );
+              //return post.data.attributes.content; //return CommentPost.component({post});
             })}
         </div>
       )

@@ -35,14 +35,15 @@ return [
         ->subscribe(Listener\HandleDeletions::class),
 
 
-    /**/(new Extend\ModelVisibility(Post::class))
-        ->scopeAll(HidePostCommentReplyScope::class),
+    /*(new Extend\ModelVisibility(Post::class))
+        ->scopeAll(HidePostCommentReplyScope::class),*/
 
     (new Extend\ApiSerializer(PostSerializer::class))
         ->attributes(function (PostSerializer $serializer, Post $post, array $attributes) {
+
             $attributes['replyTo'] = (int) $post->reply_to;
             $attributes['replyCount'] = (int) $post->reply_count;
-
+            //var_dump($attributes);
             return $attributes;
         }),
     /*
