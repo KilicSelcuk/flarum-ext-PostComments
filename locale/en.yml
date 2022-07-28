@@ -5,3 +5,6 @@ kilicselcuk-postcomments:
     my_cool_key: My Cool Key
 
   forum:
+    post:
+      show_replies: "Show {count} Replies"
+      show_reply: "Show {count} Reply"

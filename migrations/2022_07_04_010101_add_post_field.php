@@ -22,8 +22,3 @@ return [
         // no.
     },
 ];
-/*
-return Migration::addColumns('posts', [
-    'reply_to' => ['integer'],
-    'reply_count' => ['integer']
-]);*/

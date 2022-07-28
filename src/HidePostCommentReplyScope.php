@@ -22,7 +22,7 @@ class HidePostCommentReplyScope
         //var_dump($query);
         $query->where(function (Builder $query) use ($actor) {
 
-            $query->Where('reply_to', '=', 0);
+            //$query->Where('reply_to', '=', 0);
 
             /**
              * @var $manager ExtensionManager

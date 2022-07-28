@@ -37,23 +37,24 @@ return [
 
     /*(new Extend\ModelVisibility(Post::class))
         ->scopeAll(HidePostCommentReplyScope::class),*/
+    /*    */
+        (new Extend\ApiSerializer(PostSerializer::class))
+            ->attributes(function (PostSerializer $serializer, Post $post, array $attributes) {
 
-    (new Extend\ApiSerializer(PostSerializer::class))
-        ->attributes(function (PostSerializer $serializer, Post $post, array $attributes) {
+                $attributes['replyTo'] = (int) $post->reply_to;
+                $attributes['replyCount'] = (int) $post->reply_count;
+                //var_dump($attributes);
+                return $attributes;
+            }),
 
-            $attributes['replyTo'] = (int) $post->reply_to;
-            $attributes['replyCount'] = (int) $post->reply_count;
-            //var_dump($attributes);
-            return $attributes;
-        }),
-    /*
     //https://docs.flarum.org/extend/model-visibility/
     (new Extend\ModelVisibility(Post::class))
         ->scopeAll(function(User $actor, Builder $query, $ability) {
             $sql = $query->toSql();
-            if (stripos($sql, 'from `posts') && !stripos($sql, 'update') && !stripos($sql, 'delete')  && strpos($sql, 'id')) {
+
+            if (stripos($sql, 'from `php_posts') && !stripos($sql, 'update') && !stripos($sql, 'delete')  && strpos($sql, 'id')) {
                 $query->where('reply_to', 0);
             }
         }),
-    */
+
 ];
