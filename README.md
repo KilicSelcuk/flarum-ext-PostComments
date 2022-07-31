@@ -9,7 +9,7 @@ A [Flarum](http://flarum.org) extension. Make sure to comment on the answers and
 Install with composer:
 
 ```sh
-composer require kilicselcuk/flarum-ext-postcomments:"*"
+composer require kilicselcuk/flarum-ext-postcomments:"*"@dev
 ```
 
 ## Updating
