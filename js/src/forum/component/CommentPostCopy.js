@@ -24,30 +24,8 @@ import Link from 'flarum/common/components/Link';
  *
  * - `post`
  */
-const formatDate = date => {
-  const d = new Date(date)
-
-  //date
-  let month = (d.getMonth() + 1).toString()
-  let day = d.getDate().toString()
-  const year = d.getFullYear()
-  if (month.length < 2) {
-    month = '0' + month
-  }
-  if (day.length < 2) {
-    day = '0' + day
-  }
-
-
-  //time
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  return [ day, month, year ].join('/') + " - " + [ hours, minutes ].join(':')
-}
 
 export default class CommentPostCopy extends Post {
-
-
 
   oninit(vnode) {
     super.oninit(vnode);
@@ -77,20 +55,12 @@ export default class CommentPostCopy extends Post {
 
   content() {
     const user = this.attrs.post.user();
-
-    //console.dir(user.data.attributes);
-
-
-    console.dir(humanTime(this.attrs.post.createdAt()));
-
+    //console.dir(humanTime(this.attrs.post.createdAt()));
 
     const posthtmlclear = this.attrs.post.contentHtml().replace(/(<p>|<\/p>|<br>)/gi, "");
 
-
     return super.content().concat([
-
       <div className="postcommentsDIV">
-
         {this.isEditing() ? <ComposerPostPreview className="Post-preview" composer={app.composer} /> :
           m.trust(posthtmlclear)} -
         <Link className="postcommentslink" href={app.route.user(user)}>
@@ -163,50 +133,4 @@ export default class CommentPostCopy extends Post {
     this.revealContent = !this.revealContent;
   }
 
-  /**
-   * Build an item list for the post's header.
-   *
-   * @return {ItemList<import('mithril').Children>}
-   */
-  headerItems() {
-    const items = new ItemList();
-    const post = this.attrs.post;
-
-    items.add(
-      'user',
-      PostUser.component({
-        post,
-        cardVisible: this.cardVisible,
-        oncardshow: () => {
-          this.cardVisible = true;
-          m.redraw();
-        },
-        oncardhide: () => {
-          this.cardVisible = false;
-          m.redraw();
-        },
-      }),
-      100
-    );
-    items.add('meta', PostMeta.component({ post }));
-
-    if (post.isEdited() && !post.isHidden()) {
-      items.add('edited', PostEdited.component({ post }));
-    }
-
-    // If the post is hidden, add a button that allows toggling the visibility
-    // of the post's content.
-    if (post.isHidden()) {
-      items.add(
-        'toggle',
-        Button.component({
-          className: 'Button Button--default Button--more',
-          icon: 'fas fa-ellipsis-h',
-          onclick: this.toggleContent.bind(this),
-        })
-      );
-    }
-
-    return items;
-  }
 }

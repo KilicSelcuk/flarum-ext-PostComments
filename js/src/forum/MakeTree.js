@@ -1,6 +1,5 @@
 import {extend, override} from 'flarum/forum/extend';
 import Post from 'flarum/forum/components/Post';
-import Button from 'flarum/forum/components/Button';
 import icon from 'flarum/forum/helpers/icon';
 //import CommentPost from 'flarum/components/CommentPost';
 //import CommentPostCopy from './component/CommentPostCopyOriginal';
@@ -36,19 +35,15 @@ export default function MakeTree() {
       )
     }
 
-
     if (this.attrs.post.data.attributes.replyCount > app.cache.trees[id].length - app.cache.pushTree[id] ||
       (app.cache.trees[id].length === 0 && this.attrs.post.data.attributes.replyCount))
     {
-
-
       app.store.find('trees', id)
         .then(response => {
           delete response.payload;
           [].push.apply(app.cache.trees[id], response);
           m.redraw();
         })
-
     }
   })
 }
