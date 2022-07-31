@@ -9,12 +9,7 @@ import ItemList from 'flarum/common/utils/ItemList';
 import listItems from 'flarum/common/helpers/listItems';
 import Button from 'flarum/common/components/Button';
 import ComposerPostPreview from 'flarum/components/ComposerPostPreview';
-import humanTime from 'flarum/common/helpers/humanTime';
-import username from 'flarum/common/helpers/username';
-import avatar from 'flarum/common/helpers/avatar';
-import icon from 'flarum/forum/helpers/icon';
 
-import Link from 'flarum/common/components/Link';
 /**
  * The `CommentPost` component displays a standard `comment`-typed post. This
  * includes a number of item lists (controls, header, and footer) surrounding
@@ -24,31 +19,7 @@ import Link from 'flarum/common/components/Link';
  *
  * - `post`
  */
-const formatDate = date => {
-  const d = new Date(date)
-
-  //date
-  let month = (d.getMonth() + 1).toString()
-  let day = d.getDate().toString()
-  const year = d.getFullYear()
-  if (month.length < 2) {
-    month = '0' + month
-  }
-  if (day.length < 2) {
-    day = '0' + day
-  }
-
-
-  //time
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  return [ day, month, year ].join('/') + " - " + [ hours, minutes ].join(':')
-}
-
 export default class CommentPostCopy extends Post {
-
-
-
   oninit(vnode) {
     super.oninit(vnode);
 
@@ -76,26 +47,12 @@ export default class CommentPostCopy extends Post {
   }
 
   content() {
-    const user = this.attrs.post.user();
-
-    //console.dir(user.data.attributes);
-
-
-    console.dir(humanTime(this.attrs.post.createdAt()));
-
-
-    const posthtmlclear = this.attrs.post.contentHtml().replace(/(<p>|<\/p>|<br>)/gi, "");
-
-
     return super.content().concat([
-
-      <div className="postcommentsDIV">
-
-        {this.isEditing() ? <ComposerPostPreview className="Post-preview" composer={app.composer} /> :
-          m.trust(posthtmlclear)} -
-        <Link className="postcommentslink" href={app.route.user(user)}>
-          {avatar(user || null, {className:"postcommentsavatar"})} {username(user)}
-        </Link> {humanTime(this.attrs.post.createdAt())}
+      <header className="Post-header">
+        <ul>{listItems(this.headerItems().toArray())}</ul>
+      </header>,
+      <div className="Post-body">
+        {this.isEditing() ? <ComposerPostPreview className="Post-preview" composer={app.composer} /> : m.trust(this.attrs.post.contentHtml())}
       </div>,
     ]);
   }
@@ -142,8 +99,7 @@ export default class CommentPostCopy extends Post {
       (attrs.className || '') +
       ' ' +
       classList({
-        CommentPostReply: true,
-        topreply:true,
+        CommentPost: true,
         'Post--renderFailed': post.renderFailed(),
         'Post--hidden': post.isHidden(),
         'Post--edited': post.isEdited(),
@@ -152,7 +108,7 @@ export default class CommentPostCopy extends Post {
       });
 
     if (this.isEditing()) attrs['aria-busy'] = 'true';
-//console.log(attrs);
+
     return attrs;
   }
 

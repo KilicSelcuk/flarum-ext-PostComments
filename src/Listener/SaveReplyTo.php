@@ -19,10 +19,13 @@ class SaveReplyTo
 
         $pattern = '/@"([a-zA-Z0-9_-]+)"#p([0-9]+)/i';
         $eslesme = preg_match_all($pattern, $data,$eslesenler); // Outputs 4
-
+//var_dump($eslesenler);
 
         // tek bir cevapa cevap veriliyorsa islemleri yapariz, birden fazla cevapa mention yaparak cevap verilmek istenirse normal post olarak kalmasi icin ellemiyoruz (islem yapmiyoruz)
         if ($eslesme == 1) {
+
+            // cevap verilen kullanici ve post id si
+            $usernameandpostid = $eslesenler[0][0];
 
             // cevap verilen kullanici adi
             $username = $eslesenler[1][0];
@@ -51,6 +54,9 @@ class SaveReplyTo
                 // cevap verilen post normal cevap ise yeni yorumun reply_to sunu post id si ile kaydedreriz
             } else {
                 $event->post->reply_to = $replyPost->id;
+
+                //$event->post->content = trim(str_replace($usernameandpostid,"duzenlendi",$event->post->content));
+                //$event->post->content = trim(preg_replace('/@"(.*)"#p([0-9]+)/i', "", $event->post->content));
 
                 //$event->post->reply_to = $replyPost->reply_to;
                 $replyPost->reply_count = $replyPost->reply_count +1;

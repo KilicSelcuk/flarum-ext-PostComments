@@ -6,5 +6,5 @@ kilicselcuk-postcomments:
 
   forum:
     post:
-      show_replies: "{count} Replies"
-      show_reply: "{count} Reply"
+      show_replies: "{count} Yorum"
+      show_reply: "{count} Yorum"

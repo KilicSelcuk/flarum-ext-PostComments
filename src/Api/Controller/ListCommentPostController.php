@@ -85,9 +85,9 @@ class ListCommentPostController extends AbstractListController
 
         $query = $this->posts->query();
 //die($query);
-        //$this->customScopeVisible($query, $actor);
+         $this->customScopeVisible($query, $actor);
 
-        $query->where('reply_to', $id)->skip($offset)->take($limit);
+        $query->where('reply_to', $id)->skip($offset)->take($limit+2000);
 
         $posts = $this->posts->query()->whereIn('id', $query->pluck('id')->all())->get();
 
