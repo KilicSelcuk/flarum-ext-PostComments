@@ -23,12 +23,12 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Flarum Post Comments V2",
-            "category": "",
+            "title": "Flarum Post Comments",
+            "category": "feature",
             "icon": {
-                "name": "fas fa-comment-alt-lines",
-                "color": "",
-                "backgroundColor": ""
+                "name": "fas fa-comments",
+                "backgroundColor": "#b4e299ff",
+                "color": "#84a3ff"
             }
         },
         "flarum-cli": {
